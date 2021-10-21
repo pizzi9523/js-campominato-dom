@@ -41,6 +41,7 @@ playButtonElement.addEventListener("click", function () {
                 for (let i = 0; i < bombs.length; i++) {
                     document.getElementsByClassName("grid_cell").item(bombs[i] - 1).classList.add("clicked");
                     document.getElementsByClassName("grid_cell").item(bombs[i] - 1).classList.add("bomb");
+                    document.getElementsByClassName("grid_cell").item(bombs[i] - 1).innerHTML = `<i class="fas fa-bomb"></i>`
                 }
                 esitoELement.innerHTML = `GAME OVER <br> PUNTEGGIO: ${contatore}`
                 esitoELement.style.color = "red"
