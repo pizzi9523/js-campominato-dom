@@ -12,14 +12,13 @@ const selectElement = document.getElementById("difficulty")
 let flag = 0;
 
 //L'utente indica un livello di difficoltà
-
-
-//console.log(user_choice_difficult);
 playButtonElement.addEventListener("click", function () {
     let user_choice_difficult = selectElement.value;
+    let cell_number = selectLevel(user_choice_difficult)
+
     console.log(user_choice_difficult);
 
-    let cell_number = selectLevel(user_choice_difficult)
+
 
     //QUESTE DUE RIGHE MI HANNO FATTO IMPAZZIRE
     containerElement.innerHTML = ""
@@ -54,10 +53,32 @@ function createGridClick(cell_number) {
         gridElement.innerHTML = i
         containerElement.append(gridElement)
 
+        let bombs = generateBomb(cell_number)
+        if (bombs.includes(i)) {
+            gridElement.classList.add("bomb")
+        }
+
         gridElement.addEventListener("click", function () {
             //console.log(this);
             this.classList.add("clicked")
         })
     }
+}
+
+function generateBomb(cell_number) {
+    let bombs = []
+    for (let i = 0; i < 16; i++) {
+        let bomb = Math.floor(Math.random() * cell_number) + 1
+        if (bombs.includes(bomb)) {
+            //console.log(bomb);
+            i--;
+        }
+        else {
+            bombs.push(bomb)
+        }
+
+        bombs.sort(function (a, b) { return a - b });
+    }
+    return bombs;
 }
 
