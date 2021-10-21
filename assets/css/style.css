@@ -27,6 +27,10 @@ body{
     color: black;
 }
 
+.clicked.bomb{
+    background-color: red;
+}
+
 .difficulty{
     width: 50%;
     margin: 100px auto 0;
