@@ -9,23 +9,49 @@ Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro.*/
 const containerElement = document.querySelector(".container")
 const playButtonElement = document.getElementById("play")
 const selectElement = document.getElementById("difficulty")
-let flag = 0;
+
+let contatore = 0;
 
 //L'utente indica un livello di difficoltà
 playButtonElement.addEventListener("click", function () {
     let user_choice_difficult = selectElement.value;
     let cell_number = selectLevel(user_choice_difficult)
+    //console.log(user_choice_difficult);
 
-    console.log(user_choice_difficult);
-
-
-
-    //QUESTE DUE RIGHE MI HANNO FATTO IMPAZZIRE
     containerElement.innerHTML = ""
     createGridClick(cell_number)
-    //console.log(cell_number);
+    let bombs = generateBomb(cell_number)
 
+    const gridElements = document.getElementsByClassName("grid_cell")
+
+    for (let i = 0; i < gridElements.length; i++) {
+        const gridElement = gridElements[i];
+
+        gridElement.addEventListener("click", function () {
+            console.log(this);
+
+            let cell_number = parseInt(this.innerText)
+
+            if (verifyBomb(cell_number, bombs)) {
+                this.style.backgroundColor = "red";
+                console.log(contatore);
+
+            } else {
+                this.style.backgroundColor = "skyblue";
+                contatore++;
+            }
+        })
+
+    }
 })
+
+function verifyBomb(cell_number, bombs) {
+    if (bombs.includes(cell_number)) {
+        return true;
+    }
+    return false;
+}
+
 
 function selectLevel(user_choice_difficult) {
     //In base alla scelta do una dimensione alla griglia
@@ -52,16 +78,6 @@ function createGridClick(cell_number) {
         gridElement.className = "grid_cell"
         gridElement.innerHTML = i
         containerElement.append(gridElement)
-
-        let bombs = generateBomb(cell_number)
-        if (bombs.includes(i)) {
-            gridElement.classList.add("bomb")
-        }
-
-        gridElement.addEventListener("click", function () {
-            //console.log(this);
-            this.classList.add("clicked")
-        })
     }
 }
 
@@ -81,4 +97,5 @@ function generateBomb(cell_number) {
     }
     return bombs;
 }
+
 
