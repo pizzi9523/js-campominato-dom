@@ -60,8 +60,7 @@ playButtonElement.addEventListener("click", function () {
                         document.getElementsByClassName("grid_cell").item(bombs[i] - 1).innerHTML = `<i class="fas fa-bomb"></i>`
                     }
                     for (let i = 0; i < cell_number; i++) {
-                        document.getElementsByClassName("clicked").item(i).style.backgroundColor = "green"
-
+                        document.getElementsByClassName("clicked").item(i).classList.add("win")
                     }
                 }
             }
