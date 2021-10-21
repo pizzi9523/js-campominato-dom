@@ -23,7 +23,7 @@ playButtonElement.addEventListener("click", function () {
     containerElement.innerHTML = ""
     createGridClick(cell_number)
     let bombs = generateBomb(cell_number)
-    //console.log(bombs);
+    console.log(bombs);
 
     const gridElements = document.getElementsByClassName("grid_cell")
 
@@ -33,9 +33,9 @@ playButtonElement.addEventListener("click", function () {
         gridElement.addEventListener("click", function () {
             //console.log(this);
 
-            let cell_number = parseInt(this.innerText)
+            let cella_number = parseInt(this.innerText)
 
-            if (verifyBomb(cell_number, bombs)) {
+            if (verifyBomb(cella_number, bombs)) {
                 this.classList.add("bomb")
                 console.log(contatore)
                 for (let i = 0; i < bombs.length; i++) {
@@ -49,6 +49,11 @@ playButtonElement.addEventListener("click", function () {
             if (!this.classList.contains("clicked")) {
                 this.classList.add("clicked")
                 contatore++;
+                console.log(cell_number);
+                if (contatore == cell_number - 16) {
+                    esitoELement.innerHTML = `GAME OVER <br> PUNTEGGIO: ${contatore}`
+                    esitoELement.style.color = "green"
+                }
             }
         })
 
