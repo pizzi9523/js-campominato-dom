@@ -14,21 +14,25 @@ body{
 }
 
 .grid_cell{
-    width: 100px;
-    height: 100px;
-    border: 1px solid white;
+    width: 90px;
+    height: 90px;
+    border: 2px inset skyblue;
     color: white;
     text-align: center;
-    line-height: 100px;
+    line-height: 90px;
+    margin: 5px;
+    border-radius: 20px;
 }
 
 .clicked{
-    background-color: #99CBFF;
+    background-color: #74ad18be;
     color: black;
+    border: 2px solid white;
 }
 
 .clicked.bomb{
     background-color: red;
+    border: 2px solid yellow;
 }
 
 .difficulty{
@@ -38,14 +42,18 @@ body{
 
 select{
     width: 200px;
+    height: 40px;
     text-align: center;
+    border-radius: 20px;
 }
 
 #play {
-    background-color: skyblue;
+    height: 40px;
+    background-color: rgb(131, 220, 255);
     color: black;
     border-color: white;
     width: 150px;
+    border-radius: 20px;
 }
 
 .esito{
@@ -55,7 +63,7 @@ select{
 }
 
 .win{
-    background-color: green;
+    background-color: #74ad18be;
     animation: example 5s linear;
 }
 

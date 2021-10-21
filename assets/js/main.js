@@ -11,6 +11,7 @@ const playButtonElement = document.getElementById("play")
 const selectElement = document.getElementById("difficulty")
 const esitoELement = document.querySelector(".esito")
 let contatore = 0;
+let flag = 0;
 
 //L'utente indica un livello di difficoltà
 playButtonElement.addEventListener("click", function () {
@@ -30,7 +31,7 @@ playButtonElement.addEventListener("click", function () {
     for (let i = 0; i < gridElements.length; i++) {
         const gridElement = gridElements[i];
 
-        gridElement.addEventListener("click", function () {
+        gridElement.addEventListener("click", function abc(e) {
             //console.log(this);
 
             let cella_number = parseInt(this.innerText)
@@ -49,6 +50,7 @@ playButtonElement.addEventListener("click", function () {
 
             if (!this.classList.contains("clicked")) {
                 this.classList.add("clicked")
+                this.innerHTML = `<i class="fas fa-check"></i>`
                 contatore++;
                 //console.log(cell_number);
                 if (contatore == cell_number - 16) {
