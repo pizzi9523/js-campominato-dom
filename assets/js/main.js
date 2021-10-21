@@ -9,7 +9,6 @@ Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro.*/
 const containerElement = document.querySelector(".container")
 const playButtonElement = document.getElementById("play")
 const selectElement = document.getElementById("difficulty")
-
 let contatore = 0;
 
 //L'utente indica un livello di difficoltà
@@ -21,6 +20,7 @@ playButtonElement.addEventListener("click", function () {
     containerElement.innerHTML = ""
     createGridClick(cell_number)
     let bombs = generateBomb(cell_number)
+    //console.log(bombs);
 
     const gridElements = document.getElementsByClassName("grid_cell")
 
@@ -28,16 +28,21 @@ playButtonElement.addEventListener("click", function () {
         const gridElement = gridElements[i];
 
         gridElement.addEventListener("click", function () {
-            console.log(this);
+            //console.log(this);
 
             let cell_number = parseInt(this.innerText)
 
             if (verifyBomb(cell_number, bombs)) {
-                this.style.backgroundColor = "red";
-                console.log(contatore);
+                this.classList.add("bomb")
+                console.log(contatore)
+                for (let i = 0; i < bombs.length; i++) {
+                    document.getElementsByClassName("grid_cell").item(bombs[i] - 1).classList.add("clicked")
+                    document.getElementsByClassName("grid_cell").item(bombs[i] - 1).classList.add("bomb")
+                }
+            }
 
-            } else {
-                this.style.backgroundColor = "skyblue";
+            if (!this.classList.contains("clicked")) {
+                this.classList.add("clicked")
                 contatore++;
             }
         })
@@ -93,9 +98,9 @@ function generateBomb(cell_number) {
             bombs.push(bomb)
         }
 
-        bombs.sort(function (a, b) { return a - b });
+
     }
-    return bombs;
+    return bombs.sort(function (a, b) { return a - b });
 }
 
 
