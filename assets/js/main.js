@@ -31,7 +31,7 @@ playButtonElement.addEventListener("click", function () {
     for (let i = 0; i < gridElements.length; i++) {
         const gridElement = gridElements[i];
 
-        gridElement.addEventListener("click", function abc(e) {
+        gridElement.addEventListener("click", function () {
             //console.log(this);
 
             let cella_number = parseInt(this.innerText)
