@@ -50,10 +50,19 @@ playButtonElement.addEventListener("click", function () {
             if (!this.classList.contains("clicked")) {
                 this.classList.add("clicked")
                 contatore++;
-                console.log(cell_number);
+                //console.log(cell_number);
                 if (contatore == cell_number - 16) {
-                    esitoELement.innerHTML = `GAME OVER <br> PUNTEGGIO: ${contatore}`
+                    esitoELement.innerHTML = `GAME OVER <br> PUNTEGGIO: ${contatore} <br> HAI VINTO`
                     esitoELement.style.color = "green"
+                    for (let i = 0; i < bombs.length; i++) {
+                        document.getElementsByClassName("grid_cell").item(bombs[i] - 1).classList.add("clicked");
+                        document.getElementsByClassName("grid_cell").item(bombs[i] - 1).classList.add("bomb");
+                        document.getElementsByClassName("grid_cell").item(bombs[i] - 1).innerHTML = `<i class="fas fa-bomb"></i>`
+                    }
+                    for (let i = 0; i < cell_number; i++) {
+                        document.getElementsByClassName("clicked").item(i).style.backgroundColor = "green"
+
+                    }
                 }
             }
         })
