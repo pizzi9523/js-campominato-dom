@@ -47,3 +47,9 @@ select{
     border-color: white;
     width: 150px;
 }
+
+.esito{
+    
+    margin: 50px 0;
+    text-align: center;
+}
