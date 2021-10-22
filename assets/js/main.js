@@ -44,11 +44,14 @@ playButtonElement.addEventListener("click", function () {
                     document.getElementsByClassName("grid_cell").item(bombs[i] - 1).classList.add("bomb");
                     document.getElementsByClassName("grid_cell").item(bombs[i] - 1).innerHTML = `<i class="fas fa-bomb"></i>`
                 }
+                for (let i = 0; i < cell_number; i++) {
+                    document.getElementsByClassName("grid_cell").item(i).classList.add("stop")
+                }
                 esitoELement.innerHTML = `GAME OVER <br> PUNTEGGIO: ${contatore}`
                 esitoELement.style.color = "red"
             }
 
-            if (!this.classList.contains("clicked")) {
+            if (!this.classList.contains("clicked") && !this.classList.contains("stop")) {
                 this.classList.add("clicked")
                 this.innerHTML = `<i class="fas fa-check"></i>`
                 contatore++;
